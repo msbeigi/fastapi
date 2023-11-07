@@ -70,6 +70,7 @@ def update_course(course_id:int,course:Course):
 		course_["title"]=course.title
 		course_["students"]=course.students
 		course_["teacher"]=course.teacher
+
 		course_["level"]=course.level
 		# courses[course_id]=course_
 		return course_
