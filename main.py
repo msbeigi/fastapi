@@ -1,14 +1,37 @@
-# This is a sample Python script.
-
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+from fastapi import FastAPI, HTTPException, status
+import uvicorn
+from api import main as m
 
 
-# Press the green button in the gutter to run the script.
+app_main=FastAPI()
+
+
+@app_main.get("/hello/")
+def hello_world():
+	return m.hello_world()
+
+@app_main.get("/getcourses/")
+def get_courses_():
+      return m.get_courses()
+
+@app_main.get("/getcourses/{level}/")
+def get_courses(level: str):
+      return m.get_courses(level)
+
+@app_main.delete("/delcourses/{course_id}/", status_code=status.HTTP_204_NO_CONTENT)
+def delete_course(course_id:int):
+      return m.delete_course(course_id)
+
+@app_main.post("/makecourses/")
+def create_course(new_course:m.Course):
+      return m.create_course(new_course=new_course)
+
+
+@app_main.put("/editcourses/")
+def update_course(course_id:int,course:m.Course):
+    return m.update_course(course_id,course)
+
+
 if __name__ == '__main__':
-    print_hi('PyCharm')
+    uvicorn.run(app_main,port=8001,host='0.0.0.0')
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
