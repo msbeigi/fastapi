@@ -20,6 +20,11 @@ jobs:
       
       - name: Set working directory
         run: cd $GITHUB_WORKSPACE 
+      - name: Debug Info
+        run: |
+          echo "Current directory: $(pwd)"
+          echo "GitHub workspace: $GITHUB_WORKSPACE"
+          echo "Contents of workspace: $(ls -la $GITHUB_WORKSPACE)"
 
       - name: Create virtual environment
         run: python3 -m venv venv
