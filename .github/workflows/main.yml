@@ -19,9 +19,10 @@ jobs:
           python-version: 3.8
       
       - name: Set working directory
-        run: cd $GITHUB_WORKSPACE 
-            cd ..
-            
+        run: |
+          cd $GITHUB_WORKSPACE 
+          cd ..
+
       - name: Debug Info
         run: |
           echo "Current directory: $(pwd)"
