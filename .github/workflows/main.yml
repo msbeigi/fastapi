@@ -20,6 +20,8 @@ jobs:
       
       - name: Set working directory
         run: cd $GITHUB_WORKSPACE 
+            cd ..
+            
       - name: Debug Info
         run: |
           echo "Current directory: $(pwd)"
