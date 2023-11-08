@@ -1,30 +1,41 @@
-name: Python Application Test with Github Actions
+name: Python application test with Github Actions
 
-on: 
+on:
   push:
     branches:
       - main
+
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
-    - name: Set up Python 3.8
-      uses: actions/setup-python@v1
+      - name: Checkout Repository
+        uses: actions/checkout@v2
 
-      with:
-        python-version: 3.8
-    - name: Install dependencies
+      - name: Set up Python 3.8
+        uses: actions/setup-python@v1
+        with:
+          python-version: 3.8
 
-     run: |
-        make install
-        - name: Lint with pylint
-      run: |
-        make lint
-    - name: Test with pytest
-      run: |
-        make test
-    - name: Format code
-      run: |
-        make format
+      - name: Create virtual environment
+        run: python3 -m venv venv
+
+      - name: Activate virtual environment
+        run: source venv/bin/activate
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: List Files in Directory
+        run: |
+          ls -la
+      - name: Lint with pylint
+        run: make lint
+
+      - name: Run unit tests
+        run: make test
+
+      - name: Run Makefile
+        run: |
+          make format
