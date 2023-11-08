@@ -8,13 +8,17 @@ This is a sample FastAPI project that demonstrates basic API functionality and h
 ## Prerequisites
 Before running the project, make sure you have the following installed:
 
-Python 3.7+
-FastAPI
-uvicorn
+`
+Python 3.7+`
 
+`FastAPI`
+
+`uvicorn
+`
 
 
 ## Run 
 `pip install -r requirements.txt`
+
 `uvicorn main:app_main --host 0.0.0.0 --port 8001`
 
